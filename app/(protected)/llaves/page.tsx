@@ -97,7 +97,7 @@ export default async function BracketsPage() {
 
       <main className="flex-1 overflow-x-auto p-8 relative">
         <div className="absolute top-0 left-0 w-full h-[60px] opacity-40 pointer-events-none">
-          <CintasMundialistas variant="horizontal" />
+          <CintasMundialistas variant="horizontal-flow" />
         </div>
         
         <div className="flex gap-16 min-w-max pb-16 pt-8">
