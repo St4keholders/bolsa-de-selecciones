@@ -154,7 +154,7 @@ export function SobreDiario() {
                 className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
               >
                 <div className="w-[500px] h-[500px]">
-                  <CintasMundialistas variant="radial" animated={true} />
+                  <CintasMundialistas variant="radial-explosion" animated={true} />
                 </div>
               </motion.div>
             )}
