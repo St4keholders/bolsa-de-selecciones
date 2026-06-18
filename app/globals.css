@@ -1,26 +1,64 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* PANINI 2026 AESTHETIC - WHITE REIGNS */
+  --color-canvas: #FFFFFF;
+  --color-raise: #F8F9FA;
+  --color-ink: #111827;
+  --color-ink2: #4B5563;
+  --color-dim: #6B7280;
+  --color-dim2: #9CA3AF;
+  
+  --color-primary: #1D4ED8; /* Azul confiable */
+  --color-cta: #10B981; /* Verde esmeralda (Panini) */
+  --color-accent: #EF4444; /* Rojo */
+  
+  --color-hair: rgba(0, 0, 0, 0.08);
+  --color-hair2: rgba(0, 0, 0, 0.12);
+  --color-success: #059669;
+  --color-danger: #DC2626;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* PANINI 2026 EXACT PALETTE */
+  --color-panini-mint: #70D6B1;
+  --color-panini-forest: #0D7A54;
+  --color-panini-red-dark: #8E1528;
+  --color-panini-red: #D22630;
+  --color-panini-orange: #F36F21;
+  --color-panini-mustard: #F6AA1C;
+  --color-panini-navy: #1C2B59;
+  --color-panini-blue: #4480C5;
+  --color-panini-purple: #C8A2C8; /* o lavanda pálido */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-raise);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+/* Sombras elegantes y estables, nada de brutalismo duro */
+@utility shadow-panini {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+}
+
+@utility shadow-panini-hover {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+@layer utilities {
+  .clip-path-panini-tl {
+    clip-path: circle(100% at 0 0);
+  }
+  .clip-path-panini-br {
+    clip-path: circle(100% at 100% 100%);
+  }
 }
