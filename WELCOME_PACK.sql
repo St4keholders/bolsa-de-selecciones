@@ -17,15 +17,16 @@ BEGIN
   END IF;
 
   -- Verificar si el usuario ya tiene cartas
-  SELECT count(*) INTO v_count FROM public.cartas WHERE usuario_id = v_user_id;
+  SELECT count(*) INTO v_count FROM public.portafolio WHERE user_id = v_user_id;
   IF v_count > 0 THEN
     RAISE EXCEPTION 'Ya has reclamado tu paquete de bienvenida';
   END IF;
 
   -- Insertar 5 cartas aleatorias del mercado para este usuario
-  INSERT INTO public.cartas (usuario_id, seleccion_id)
+  INSERT INTO public.portafolio (user_id, seleccion_id)
   SELECT v_user_id, id
   FROM public.mercado_selecciones
+  WHERE estado = 'activo'
   ORDER BY random()
   LIMIT 5;
 

@@ -7,7 +7,7 @@ import { Eyebrow } from "./ui/Eyebrow";
 interface RankingRow {
   player_id: string;
   player_name: string;
-  total_cards: number;
+  total_points: number;
   position: number;
 }
 
@@ -51,7 +51,7 @@ export function RankingJugadores({ userId }: { userId: string }) {
     <div className="flex flex-col w-full">
       <div className="grid grid-cols-[3fr_1fr] font-mono text-[0.65rem] text-dim tracking-widest pb-3 border-b-[2px] border-hair2 uppercase">
         <div className="pl-4">Posición y Jugador</div>
-        <div className="text-right pr-4">Cartas Activas</div>
+        <div className="text-right pr-4">Puntos</div>
       </div>
 
       <div className="flex flex-col mt-2 gap-2">
@@ -73,7 +73,7 @@ export function RankingJugadores({ userId }: { userId: string }) {
                 </span>
               </div>
               <div className={`text-right font-display font-bold text-2xl ${isMe ? 'text-white' : 'text-ink'}`}>
-                {row.total_cards}
+                {row.total_points}
               </div>
             </div>
           );
