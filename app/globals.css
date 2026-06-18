@@ -54,11 +54,69 @@ body {
   text-wrap: balance;
 }
 
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 @layer utilities {
   .clip-path-panini-tl {
     clip-path: circle(100% at 0 0);
   }
   .clip-path-panini-br {
     clip-path: circle(100% at 100% 100%);
+  }
+
+  /* ═══ NEUMORFISMO ═══ */
+  .neumo {
+    background: #FAFAFA;
+    box-shadow:
+      6px 6px 12px rgba(0,0,0,0.08),
+      -6px -6px 12px rgba(255,255,255,0.9);
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .neumo:active,
+  .neumo-pressed {
+    box-shadow:
+      inset 4px 4px 8px rgba(0,0,0,0.08),
+      inset -4px -4px 8px rgba(255,255,255,0.9);
+  }
+
+  .neumo-small {
+    box-shadow:
+      3px 3px 6px rgba(0,0,0,0.08),
+      -3px -3px 6px rgba(255,255,255,0.9);
+    border-radius: 0.75rem;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .neumo-small:active {
+    box-shadow:
+      inset 2px 2px 4px rgba(0,0,0,0.08),
+      inset -2px -2px 4px rgba(255,255,255,0.9);
+  }
+
+  .neumo-primary {
+    background: linear-gradient(145deg, #0055A4, #003d7a);
+    box-shadow:
+      4px 4px 10px rgba(0,85,164,0.3),
+      -4px -4px 10px rgba(255,255,255,0.8);
+    color: white;
+    border-radius: 1rem;
+    border: none;
+    transition: all 0.2s ease;
+  }
+
+  .neumo-primary:active {
+    box-shadow:
+      inset 3px 3px 6px rgba(0,0,0,0.15),
+      inset -3px -3px 6px rgba(255,255,255,0.3);
   }
 }

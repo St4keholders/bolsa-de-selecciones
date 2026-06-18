@@ -67,24 +67,24 @@ export function Header({ userId }: HeaderProps) {
   }, [userId, supabase]);
 
   return (
-    <div className="sticky top-0 z-50 bg-canvas/90 backdrop-blur-sm pt-4 pb-4 px-5 relative">
-      <div className="absolute top-4 right-4 z-50">
+    <div className="sticky top-0 z-50 bg-canvas/90 backdrop-blur-sm pt-2 pb-2 md:pt-4 md:pb-4 px-4 md:px-5 relative">
+      <div className="absolute top-2 right-2 md:top-4 md:right-4 z-50">
         <LogoutButton />
       </div>
-      <div className="flex flex-col items-center gap-1 relative z-10">
-        <Eyebrow className="text-[var(--color-mundial-blue)]">LA BOLSA DE SELECCIONES</Eyebrow>
-        <span className="font-sans font-normal text-dim">Hola, {nombre}</span>
+      <div className="flex flex-col items-center gap-0.5 md:gap-1 relative z-10">
+        <span className="font-mono uppercase tracking-widest text-[10px] md:text-[0.7rem] text-[var(--color-mundial-blue)] font-medium">LA BOLSA DE SELECCIONES</span>
+        <span className="font-sans font-normal text-dim text-sm md:text-base">Hola, {nombre}</span>
         
-        <div className="mt-2 text-center">
-          <div className={`font-display font-bold text-ink text-[clamp(3rem,12vw,5rem)] leading-none tracking-[-0.04em] ${puntos > 0 ? 'drop-shadow-[0_4px_12px_rgba(255,107,0,0.4)] relative inline-block' : ''}`}>
+        <div className="mt-1 md:mt-2 text-center">
+          <div className={`font-display font-bold text-ink text-5xl md:text-[clamp(3rem,12vw,5rem)] leading-none tracking-[-0.04em] ${puntos > 0 ? 'drop-shadow-[0_4px_12px_rgba(255,107,0,0.4)] relative inline-block' : ''}`}>
             {puntos.toLocaleString("es-CO")}
             {puntos > 0 && <div className="absolute -bottom-2 left-0 w-full h-[4px] bg-[var(--color-mundial-orange)] rounded-full" />}
           </div>
-          <Eyebrow className="block mt-4">PUNTOS PERMANENTES</Eyebrow>
+          <span className="font-mono uppercase tracking-widest text-[10px] md:text-[0.7rem] text-dim font-medium block mt-2 md:mt-4">PUNTOS PERMANENTES</span>
         </div>
 
-        <div className="mt-4 border border-[var(--color-mundial-blue)] rounded-full px-3 py-1 bg-[var(--color-mundial-lime)]">
-          <span className="font-mono text-sm uppercase tracking-widest font-bold text-ink">
+        <div className="mt-2 md:mt-4 border border-[var(--color-mundial-blue)] rounded-full px-2 py-0.5 md:px-3 md:py-1 bg-[var(--color-mundial-lime)] neumo-small md:bg-[var(--color-mundial-lime)] md:shadow-none">
+          <span className="font-mono text-xs md:text-sm uppercase tracking-widest font-bold text-ink">
             #{ranking} GLOBAL
           </span>
         </div>

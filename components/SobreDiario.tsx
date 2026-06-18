@@ -240,7 +240,7 @@ export function SobreDiario() {
           <Eyebrow className="mb-8 block">
             {isNewUser ? "CONTIENE 5 CARTAS" : "ABRIR PARA REVELAR"}
           </Eyebrow>
-          <Button variant="custom" onClick={handleOpen} className="text-xl py-5 px-10 bg-primary text-canvas">
+          <Button variant="custom" onClick={handleOpen} className="text-xl py-5 px-10 bg-primary text-canvas neumo-primary md:bg-primary md:shadow-none md:rounded-none">
             {isNewUser ? "ABRIR SOBRE (5 CARTAS)" : "ABRIR SOBRE"}
           </Button>
         </>

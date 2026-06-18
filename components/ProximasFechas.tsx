@@ -133,7 +133,8 @@ export function ProximasFechas() {
                             style={{ background: localTheme.gradientFull }}
                           />
                           <span className="font-sans text-sm text-ink truncate">
-                            {p.local_pais}
+                            <span className="md:hidden">{(p.local_pais || '').length > 12 ? (localTheme?.codigo || (p.local_pais || '').substring(0, 3).toUpperCase()) : p.local_pais}</span>
+                            <span className="hidden md:inline">{p.local_pais}</span>
                           </span>
                         </>
                       ) : (
@@ -154,7 +155,8 @@ export function ProximasFechas() {
                             style={{ background: visitTheme.gradientFull }}
                           />
                           <span className="font-sans text-sm text-ink truncate">
-                            {p.visitante_pais}
+                            <span className="md:hidden">{(p.visitante_pais || '').length > 12 ? (visitTheme?.codigo || (p.visitante_pais || '').substring(0, 3).toUpperCase()) : p.visitante_pais}</span>
+                            <span className="hidden md:inline">{p.visitante_pais}</span>
                           </span>
                         </>
                       ) : (

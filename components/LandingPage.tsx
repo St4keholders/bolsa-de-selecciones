@@ -46,7 +46,7 @@ function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-5 py-20 overflow-hidden">
+    <section className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center px-5 py-12 md:py-20 overflow-hidden">
       {/* Fondo Panini (esquinas dinámicas) */}
       <div className="absolute inset-0 z-0">
         <BackgroundMundialista />
@@ -58,36 +58,33 @@ function HeroSection() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 flex flex-col items-center text-center max-w-[680px]"
+        className="relative z-10 flex flex-col items-center text-center max-w-[680px] space-y-4 md:space-y-8"
       >
-        <motion.div variants={fadeInUp} className="mb-8">
+        <motion.div variants={fadeInUp}>
           <LogoMundial size={80} />
         </motion.div>
 
         <motion.div variants={fadeInUp} className="relative w-full">
           {/* SVG decorativo (bola gris) ha sido eliminado para mantener la pantalla 100% limpia */}
-          <h1 className="font-display font-bold text-[clamp(3rem,8vw,6rem)] leading-[0.95] tracking-[-0.04em] text-ink mb-6 relative z-10">
+          <h1 className="font-display font-bold text-3xl md:text-5xl lg:text-6xl leading-[0.95] tracking-[-0.04em] text-ink relative z-10">
             La Bolsa de Selecciones
           </h1>
         </motion.div>
 
         <motion.p
           variants={fadeInUp}
-          className="font-sans font-light text-dim max-w-prose text-lg mb-8 leading-relaxed"
+          className="font-sans font-light text-dim max-w-xs md:max-w-prose text-sm md:text-lg leading-relaxed"
         >
           Colecciona selecciones del Mundial 2026, observa cómo sus
           estadísticas suben y bajan con cada partido, y liquida en el
           momento exacto para acumular puntos.
         </motion.p>
-        
-        {/* Espacio limpio para respirar */}
-        <div className="w-full h-[40px] mb-8" />
 
-        <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 mb-10">
+        <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 md:gap-4">
           {hasSession ? (
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center bg-[var(--color-panini-blue)] text-white font-mono uppercase tracking-widest font-bold py-5 px-10 text-lg shadow-panini hover:shadow-panini-hover rounded-md transition-all"
+              className="inline-flex items-center justify-center bg-[var(--color-panini-blue)] text-white font-mono uppercase tracking-widest font-bold py-4 px-8 md:py-5 md:px-10 text-base md:text-lg shadow-panini hover:shadow-panini-hover rounded-md transition-all"
             >
               IR A MI DASHBOARD
             </Link>
@@ -95,13 +92,13 @@ function HeroSection() {
             <>
               <Link
                 href="/register"
-                className="inline-flex items-center justify-center bg-[var(--color-panini-blue)] text-white font-mono uppercase tracking-widest font-bold py-4 px-8 shadow-panini hover:shadow-panini-hover rounded-md transition-all"
+                className="inline-flex items-center justify-center bg-[var(--color-panini-blue)] text-white font-mono uppercase tracking-widest font-bold py-3 px-6 md:py-4 md:px-8 text-sm md:text-base shadow-panini hover:shadow-panini-hover rounded-md transition-all"
               >
                 Empezar a jugar
               </Link>
               <Link
                 href="/login"
-                className="inline-flex items-center justify-center bg-white text-ink border border-hair2 font-mono uppercase tracking-widest font-bold py-4 px-8 shadow-sm hover:shadow-md rounded-md transition-all"
+                className="inline-flex items-center justify-center bg-white text-ink border border-hair2 font-mono uppercase tracking-widest font-bold py-3 px-6 md:py-4 md:px-8 text-sm md:text-base shadow-sm hover:shadow-md rounded-md transition-all"
               >
                 Ya tengo cuenta
               </Link>
@@ -265,7 +262,7 @@ function PricingSection() {
 
         <motion.div variants={fadeInUp} className="bg-white rounded-xl border border-hair2 p-6 md:p-8 shadow-panini">
           <Eyebrow className="block mb-6">EJEMPLO · <span className="text-[#75AADB]">Argentina</span> 3 - 1 <span className="text-[#006233]">Argelia</span></Eyebrow>
-          <div className="grid grid-cols-2 gap-8 font-sans text-sm">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 font-sans text-sm">
             {/* Argentina */}
             <div>
               <div className="font-display font-semibold text-ink text-base mb-3 border-b border-hair2 pb-2">Argentina (gana)</div>
@@ -273,6 +270,8 @@ function PricingSection() {
                 <div className="flex justify-between items-center"><span className="text-dim">Ataque</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+24</span></div>
                 <div className="flex justify-between items-center"><span className="text-dim">Reflejos</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+10</span></div>
                 <div className="flex justify-between items-center"><span className="text-dim">Muralla</span><span className="font-mono bg-[var(--color-mundial-red)] text-white px-2 py-0.5 font-bold">-5</span></div>
+                <div className="flex justify-between items-center"><span className="text-dim">Creación</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+7</span></div>
+                <div className="flex justify-between items-center"><span className="text-dim">Posesión</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+5</span></div>
               </div>
               <Hairline className="my-3" />
               <div className="flex justify-between font-display font-bold text-ink">
@@ -286,6 +285,8 @@ function PricingSection() {
                 <div className="flex justify-between items-center"><span className="text-dim">Ataque</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+8</span></div>
                 <div className="flex justify-between items-center"><span className="text-dim">Reflejos</span><span className="font-mono bg-[var(--color-mundial-red)] text-white px-2 py-0.5 font-bold">-5</span></div>
                 <div className="flex justify-between items-center"><span className="text-dim">Muralla</span><span className="font-mono bg-[var(--color-mundial-red)] text-white px-2 py-0.5 font-bold">-15</span></div>
+                <div className="flex justify-between items-center"><span className="text-dim">Creación</span><span className="font-mono bg-[var(--color-mundial-red)] text-white px-2 py-0.5 font-bold">-3</span></div>
+                <div className="flex justify-between items-center"><span className="text-dim">Posesión</span><span className="font-mono bg-[var(--color-mundial-lime)] text-ink px-2 py-0.5 font-bold">+2</span></div>
               </div>
               <Hairline className="my-3" />
               <div className="flex justify-between font-display font-bold text-ink">

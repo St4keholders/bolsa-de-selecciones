@@ -64,11 +64,11 @@ interface CartaSeleccionProps {
 function Stat({ icon: Icon, label, value, isQuiebra }: { icon: any, label: string, value: number, isQuiebra: boolean }) {
   return (
     <div className="flex flex-col items-center">
-      <div className="flex items-center gap-1 mb-1">
-        <Icon className="w-3 h-3 text-dim2" />
-        <Eyebrow className="text-[10px] text-dim">{label}</Eyebrow>
+      <div className="flex items-center gap-0.5 md:gap-1 mb-0.5 md:mb-1">
+        <Icon className="w-2.5 h-2.5 md:w-3 md:h-3 text-dim2" />
+        <Eyebrow className="text-[9px] md:text-[10px] text-dim">{label}</Eyebrow>
       </div>
-      <span className="font-display font-bold text-ink text-[1.1rem]">
+      <span className="font-display font-bold text-ink text-sm md:text-[1.1rem]">
         {isQuiebra ? 0 : value}
       </span>
     </div>
@@ -105,7 +105,7 @@ function AnimatedValue({ value, isQuiebra, isReveal }: { value: number, isQuiebr
   }, [value, isReveal]);
 
   return (
-    <span className={`font-display font-bold text-3xl mt-1 mb-2 leading-none tracking-tighter ${isQuiebra ? 'text-dim' : 'text-ink'}`}>
+    <span className={`font-display font-bold text-2xl md:text-3xl mt-1 mb-1 md:mb-2 leading-none tracking-tighter ${isQuiebra ? 'text-dim' : 'text-ink'}`}>
       {displayValue.toLocaleString("es-CO")} {isQuiebra && <span className="text-sm">PTS</span>}
     </span>
   );
@@ -189,7 +189,7 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
 
       <motion.div 
         layoutId={carta.id}
-        className={`bg-canvas flex flex-col aspect-[3/4.2] relative transition-transform duration-300 hover:-translate-y-2 shadow-panini-hover overflow-hidden rounded-sm ${isQuiebra ? 'grayscale opacity-60' : ''}`}
+        className={`bg-canvas flex flex-col aspect-[3/4.2] relative transition-transform duration-300 hover:-translate-y-2 shadow-panini-hover overflow-hidden rounded-sm neumo md:bg-canvas md:shadow-panini-hover ${isQuiebra ? 'grayscale opacity-60' : ''}`}
       >
         {/* Capa 0: Cintas gruesas estilo ESPN en los bordes */}
         <div className="absolute inset-0 opacity-100">
@@ -208,7 +208,7 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
         {/* Capa 2: La placa blanca central masiva (El ancla) */}
         <div className="absolute inset-[10px] bg-canvas shadow-panini flex flex-col z-10 rounded-sm" />
 
-        <div className="flex-1 flex flex-col z-20 px-5 pb-5 pt-3">
+        <div className="flex-1 flex flex-col z-20 px-3 pb-3 pt-2 md:px-5 md:pb-5 md:pt-3">
           
           <div className="flex justify-between items-start mb-2">
             <span className="font-mono text-xs tracking-widest font-bold text-dim2">
@@ -222,12 +222,12 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
           </div>
 
           {/* PAIS SVG */}
-          <div className="flex flex-col items-center justify-center relative my-2 h-[80px]">
+          <div className="flex flex-col items-center justify-center relative my-1 md:my-2 h-[50px] md:h-[80px]">
             <CountrySvg 
               countryCode={countryTheme?.codigo || 'XXX'} 
               svgArtType={countryTheme?.svgArt || 'Text'} 
               color={isQuiebra ? '#6B6B6B' : countryTheme?.colores?.primary}
-              className="w-20 h-20"
+              className="w-12 h-12 md:w-20 md:h-20"
             />
             {isQuiebra && (
               <div className="absolute inset-0 flex items-center justify-center">
@@ -238,22 +238,22 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
             )}
           </div>
 
-          <h3 className="font-display font-bold text-2xl leading-tight text-ink text-center mb-1 line-clamp-1 uppercase tracking-tight">
+          <h3 className="font-display font-bold text-base md:text-2xl leading-tight text-ink text-center mb-0.5 md:mb-1 line-clamp-1 uppercase tracking-tight">
             {carta.seleccion.pais}
           </h3>
 
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-2 md:mb-4">
             {!isQuiebra && (
-              <span className={`font-mono text-[10px] tracking-widest px-2 py-0.5 rounded font-bold uppercase border ${tier.badgeBg} ${tier.badgeText} border-ink/10`}>
+              <span className={`font-mono text-[9px] md:text-[10px] tracking-widest px-2 py-0.5 rounded font-bold uppercase border ${tier.badgeBg} ${tier.badgeText} border-ink/10`}>
                 {tier.label}
               </span>
             )}
           </div>
 
-          <Hairline className="mb-2 border-ink/10" />
+          <Hairline className="mb-1 md:mb-2 border-ink/10" />
 
           {/* 6 Stats Grid */}
-          <div className="grid grid-cols-3 gap-y-3 gap-x-1 mb-2">
+          <div className="grid grid-cols-3 gap-y-1.5 md:gap-y-3 gap-x-1 mb-1 md:mb-2">
             <Stat icon={IconArrow} label="ATAQ" value={carta.seleccion.ataque} isQuiebra={isQuiebra} />
             <Stat icon={IconCreacion} label="CREA" value={carta.seleccion.creacion} isQuiebra={isQuiebra} />
             <Stat icon={IconMuralla} label="MURA" value={carta.seleccion.muralla} isQuiebra={isQuiebra} />
@@ -262,7 +262,7 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
             <Stat icon={IconEficiencia} label="EFI" value={carta.seleccion.eficiencia} isQuiebra={isQuiebra} />
           </div>
 
-          <Hairline className="mb-2 border-ink/10" />
+          <Hairline className="mb-1 md:mb-2 border-ink/10" />
 
           {/* Valor Total */}
           <div className="flex flex-col items-center justify-center mt-auto">
@@ -274,7 +274,7 @@ export function CartaSeleccion({ carta, onLiquidateSuccess, isReveal = false, is
         <button 
           onClick={() => setShowModal(true)}
           disabled={isQuiebra}
-          className={`relative z-20 w-[calc(100%-20px)] mx-[10px] mb-[10px] py-3 font-mono uppercase tracking-widest text-xs font-bold transition-all rounded-sm ${
+          className={`relative z-20 w-[calc(100%-16px)] md:w-[calc(100%-20px)] mx-[8px] md:mx-[10px] mb-[8px] md:mb-[10px] py-2 md:py-3 font-mono uppercase tracking-widest text-xs font-bold transition-all rounded-sm neumo-small md:shadow-none md:border-0 ${
             isQuiebra 
               ? 'bg-raise text-dim cursor-not-allowed border border-hair2' 
               : 'bg-[var(--color-panini-blue)] text-white hover:bg-[var(--color-panini-navy)] hover:shadow-panini active:translate-y-[1px]'
