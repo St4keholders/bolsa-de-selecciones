@@ -78,22 +78,33 @@ export function HistorialSeleccion() {
   return (
     <div className="flex flex-col bg-canvas border border-hair2">
       {/* Header Select */}
-      <div className="border-b border-hair2 p-4 flex items-center">
+      <div className="p-4">
         {selecciones.length === 0 ? (
           <div className="w-full text-center py-4">
             <span className="font-mono text-dim text-sm tracking-widest uppercase">Aún no hay selecciones en el mercado</span>
           </div>
         ) : (
-          <select 
-            value={selectedId}
-            onChange={(e) => setSelectedId(e.target.value ? Number(e.target.value) : "")}
-            className="w-full bg-transparent font-display text-xl focus:outline-none appearance-none"
-          >
-            <option value="">Selecciona un país para ver historial...</option>
-            {selecciones.map(s => (
-              <option key={s.id} value={s.id}>{s.pais}</option>
-            ))}
-          </select>
+          <div className="relative">
+            <select 
+              value={selectedId}
+              onChange={(e) => setSelectedId(e.target.value ? Number(e.target.value) : "")}
+              className="w-full font-display text-lg font-semibold text-white py-4 px-5 pr-12 rounded-xl appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-panini-mint)] transition-all"
+              style={{
+                background: 'linear-gradient(135deg, var(--color-panini-blue) 0%, var(--color-panini-purple) 100%)',
+              }}
+            >
+              <option value="" className="bg-white text-ink">🏆 Selecciona un país...</option>
+              {selecciones.map(s => (
+                <option key={s.id} value={s.id} className="bg-white text-ink">{s.pais}</option>
+              ))}
+            </select>
+            {/* Flecha dropdown */}
+            <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </div>
         )}
       </div>
 
