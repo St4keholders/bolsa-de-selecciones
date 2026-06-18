@@ -187,7 +187,7 @@ export function SobreDiario() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="absolute -top-10 -right-10 w-[150px] h-[150px] pointer-events-none z-20"
                 >
-                  <CintasMundialistas variant="corner" />
+                  <CintasMundialistas variant="corner-burst" />
                 </motion.div>
               )}
             </motion.div>
