@@ -84,15 +84,9 @@ export function PartnerBanner({ userId }: PartnerBannerProps) {
   // CASE A — User WITHOUT partner (CTA banner)
   return (
     <div className="mx-3 md:mx-5 mt-3 md:mt-4">
-      <div
-        className="rounded-2xl p-5 md:p-6 neumo md:neumo-small overflow-hidden relative"
-        style={{
-          background:
-            "linear-gradient(135deg, rgba(112,214,177,0.15) 0%, rgba(243,111,33,0.12) 100%)",
-        }}
-      >
+      <div className="rounded-2xl p-5 md:p-6 overflow-hidden relative bg-white/90 backdrop-blur-md shadow-panini border border-hair2">
         {/* Subtle gradient accent line at top */}
-        <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-[var(--color-panini-mint)] to-[var(--color-panini-orange)]" />
+        <div className="absolute top-0 left-0 w-full h-[4px] bg-gradient-to-r from-[var(--color-panini-mint)] to-[var(--color-panini-orange)]" />
 
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6">
           {/* Icon */}
