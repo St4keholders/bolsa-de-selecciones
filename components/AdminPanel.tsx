@@ -8,8 +8,9 @@ import { Input } from "./ui/Input";
 import { Button } from "./ui/Button";
 import { COUNTRIES } from "@/lib/countries";
 import { CalendarIcon } from "lucide-react";
+import { AdminPartnersPanel } from "./AdminPartnersPanel";
 
-type Tab = 'partidos' | 'llaves' | 'quiebras';
+type Tab = 'partidos' | 'llaves' | 'quiebras' | 'partners';
 
 type PartidoLleno = Partido & {
   local_pais?: string;
@@ -53,6 +54,12 @@ export function AdminPanel() {
         >
           Quiebras
         </button>
+        <button 
+          onClick={() => setActiveTab('partners')}
+          className={`flex-1 py-4 font-mono text-sm tracking-widest uppercase transition-colors border-l border-hair2 ${activeTab === 'partners' ? 'bg-[var(--color-panini-blue)] text-canvas font-bold' : 'text-dim hover:bg-raise'}`}
+        >
+          Partners
+        </button>
       </div>
 
       {/* Content */}
@@ -60,6 +67,7 @@ export function AdminPanel() {
         {activeTab === 'partidos' && <AdminPartidos selecciones={selecciones} supabase={supabase} />}
         {activeTab === 'llaves' && <AdminLlaves selecciones={selecciones} supabase={supabase} />}
         {activeTab === 'quiebras' && <AdminQuiebras selecciones={selecciones} supabase={supabase} />}
+        {activeTab === 'partners' && <AdminPartnersPanel />}
       </div>
     </div>
   );

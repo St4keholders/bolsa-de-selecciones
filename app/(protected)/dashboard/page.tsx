@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { Header } from "@/components/Header";
 import { MatchNotifier } from "@/components/MatchNotifier";
 import { DashboardTabs } from "@/components/DashboardTabs";
+import { PartnerBanner } from "@/components/PartnerBanner";
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -17,6 +18,7 @@ export default async function DashboardPage() {
     <div className="flex flex-col min-h-screen">
       <MatchNotifier />
       <Header userId={user.id} />
+      <PartnerBanner userId={user.id} />
 
       <main className="flex-1 flex flex-col">
         <DashboardTabs userId={user.id} />
@@ -24,3 +26,4 @@ export default async function DashboardPage() {
     </div>
   );
 }
+

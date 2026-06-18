@@ -1,9 +1,22 @@
+export interface Partner {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  logo_url: string | null;
+  premio_titulo: string;
+  premio_descripcion: string;
+  color_brand: string;
+  activo: boolean;
+  created_at: string;
+}
+
 export type Usuario = {
   id: string;
   nombre: string;
   email: string;
   puntos_permanentes: number;
   es_admin: boolean;
+  partner_id: string | null;
   created_at: string;
 };
 
