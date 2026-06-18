@@ -19,6 +19,7 @@ export function SobreDiario() {
   const [animationPhase, setAnimationPhase] = useState<number>(0);
   const [revealedCarta, setRevealedCarta] = useState<CartaConSeleccion | null>(null);
   const [selectedCountry, setSelectedCountry] = useState<CountryTheme | null>(null);
+  const [isNewUser, setIsNewUser] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchCooldown = async () => {
@@ -39,6 +40,9 @@ export function SobreDiario() {
           setIsAvailable(false);
           setNextAvailable(nextDate);
         }
+      } else {
+        // No tiene cartas, es usuario nuevo
+        setIsNewUser(true);
       }
     };
     
@@ -73,7 +77,18 @@ export function SobreDiario() {
   const handleOpen = async () => {
     if (!isAvailable) return;
 
-    // Call RPC
+    if (isNewUser) {
+      // Reclamar 5 cartas
+      const { error } = await supabase.rpc('reclamar_bienvenida');
+      if (!error) {
+        window.location.reload();
+      } else {
+        alert("Error al reclamar cartas de bienvenida.");
+      }
+      return;
+    }
+
+    // Call RPC for daily card
     const { data, error } = await supabase.rpc('abrir_sobre_diario');
 
     if (error || !data.success) {
@@ -219,10 +234,14 @@ export function SobreDiario() {
       
       {isAvailable ? (
         <>
-          <h2 className="font-display text-3xl font-semibold text-ink mb-2">Sobre disponible</h2>
-          <Eyebrow className="mb-8 block">ABRIR PARA REVELAR</Eyebrow>
+          <h2 className="font-display text-3xl font-semibold text-ink mb-2">
+            {isNewUser ? "Paquete de Inicio" : "Sobre disponible"}
+          </h2>
+          <Eyebrow className="mb-8 block">
+            {isNewUser ? "CONTIENE 5 CARTAS" : "ABRIR PARA REVELAR"}
+          </Eyebrow>
           <Button variant="custom" onClick={handleOpen} className="text-xl py-5 px-10 bg-primary text-canvas">
-            ABRIR SOBRE
+            {isNewUser ? "ABRIR SOBRE (5 CARTAS)" : "ABRIR SOBRE"}
           </Button>
         </>
       ) : (

@@ -17,7 +17,6 @@ export function Portafolio({ userId }: PortafolioProps) {
   const [cartas, setCartas] = useState<CartaConSeleccion[]>([]);
   const [loading, setLoading] = useState(true);
   const [isNewUser, setIsNewUser] = useState(false);
-  const [isClaiming, setIsClaiming] = useState(false);
   const [showBanner, setShowBanner] = useState(false);
   const supabase = createClient();
 
@@ -130,29 +129,8 @@ export function Portafolio({ userId }: PortafolioProps) {
       </div>
 
       {cartas.length === 0 ? (
-        <div className="bg-white border border-hair2 rounded-xl p-12 text-center shadow-panini flex flex-col items-center justify-center">
-          <IconEnvelope className="w-16 h-16 text-[var(--color-panini-blue)] mb-4" />
-          <h3 className="font-display font-semibold text-3xl text-ink mb-2">¡Bienvenido a la Bolsa!</h3>
-          <p className="font-sans text-dim max-w-md mb-8 text-lg">
-            Parece que eres nuevo y aún no tienes tus 5 cartas iniciales de regalo. ¡Reclámalas ahora!
-          </p>
-          <Button 
-            className="bg-[var(--color-panini-mint)] text-ink font-bold tracking-widest text-lg px-8 py-4 shadow-panini hover:shadow-panini-hover"
-            disabled={isClaiming}
-            onClick={async () => {
-              setIsClaiming(true);
-              const { data, error } = await supabase.rpc('reclamar_bienvenida');
-              if (!error) {
-                // Refrescar página para ver las cartas
-                window.location.reload();
-              } else {
-                alert("Error al reclamar cartas: Por favor ejecuta el archivo WELCOME_PACK.sql en Supabase.");
-                setIsClaiming(false);
-              }
-            }}
-          >
-            {isClaiming ? "RECLAMANDO..." : "RECLAMAR 5 CARTAS GRATIS"}
-          </Button>
+        <div className="bg-canvas border border-hair2 rounded-xl p-8 text-center text-dim font-sans">
+          Aún no tienes cartas en tu portafolio. ¡Abre tu paquete de inicio arriba para empezar!
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
